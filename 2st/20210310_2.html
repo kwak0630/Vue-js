@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="utf-8">
+	<title>20210310_과제</title>
+	<!-- vuejs dist -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<style>
+
+		* {margin:0;padding:0;box-sizing:border-box}
+		body{padding:50px}
+		h2{font-size:40px;}
+
+		#app{padding:50px 0}
+		#app button{display:inline-block;padding:15px 25px;border:0}
+		#app button+button{margin-left:15px}
+		.basic{background:#b0e284}
+		.timeout{background:#cfabda}
+		.transition{background:#ffe55b}
+
+		.snack-wrap{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);color:#fff;z-index:1000;font-size:14px;}
+		.snack-content{display:inline-block;padding:15px 50px 15px 30px;background:#333;border-radius:4px;color:#fff}
+		.snack-close{position:absolute;top:10px;right:20px;z-index:10;color:#fff;text-decoration:none}
+		.transition-fade-enter-active{
+			transition: all .3s ease-in;
+		}
+
+		.transition-fade-leave-active{
+			transition: all .3s ease-in-out;
+		}
+
+		.transition-fade-enter, .transition-fade-leave-to {
+			transform: translateY(-100px);
+			opacity: 0;
+		}
+	</style>
+</head>
+<body>
+<h1>snackbar</h1>
+<div id="app">
+	<button v-for="(item, key) in buttons" :key="key" :class="item.class" @click="SnackbarOpen(item)">
+		{{ item.title }}
+	</button>
+	<br/>
+
+	<transition :name="snackbar.transitionName">
+		<div class="snack-wrap" v-if="isSnackbar" :class="snackbar.class">
+			<div class="snack-content">
+				{{ snackbar.title }} | {{ snackbar.content }}
+			</div>
+			<a href="#none" @click="SnackbarClose" class="snack-close">X</a>
+		</div>
+	</<transition>
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		data() {
+			return {
+				isSnackbar: false,
+				buttons: [
+					{
+						class: "basic",
+						title: "Basic",
+						content: "기본 스낵바",
+						type: "basic"
+					},
+					{
+						class: "transition",
+						title: "Transition",
+						type: "transition",
+						content: "transform: translateY(-100px);",
+						transitionName: 'transition-fade',
+					}
+				],
+				snackbar: {
+					transitionName: '',
+					text: '',
+					title: '',
+					visible: false
+				},
+			};
+		},
+		methods: {
+			SnackbarOpen: function (item) {
+				this.isSnackbar = true;
+
+				this.snackbar.title = item.title;
+				this.snackbar.content = item.content;
+				this.snackbar.class = item.class;
+				this.snackbar.transitionName = item.transitionName;
+			},
+			SnackbarClose: function () {
+				this.isSnackbar = false;
+			}
+		}
+	});
+
+</script>
+</body>
+</html>

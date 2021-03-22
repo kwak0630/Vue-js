@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta charset="utf-8">
+	<title>20210310_과제</title>
+	<!-- vuejs dist -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<style>
+
+		* {margin:0;padding:0;box-sizing:border-box}
+		body{padding:50px}
+		h2{font-size:40px;}
+
+		#app{padding:50px 0}
+		#app button{display:inline-block;padding:15px 25px;border:0;border-radius:4px;text-transform:uppercase}
+		#app button+button{margin-left:15px;}
+
+		.basic {background-color: #8ccbfd !important;border-color: #8ccbfd !important;}
+
+		.snack-wrap {
+			position: fixed;
+			background-color: rgba(0, 0, 0, 0.4);
+			z-index: 1;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+		}
+
+		.snack-box {
+			position:relative;
+			background-color: #efefef;
+			margin: 15% auto;
+			padding: 20px;
+			border: 1px solid #888;
+			width: 50%;
+			border-radius: 15px;
+		}
+		.snack-wrap h2{padding:0 0 20px;font-size:25px;border-bottom:1px solid #adadad;text-align:center}
+		.snack-wrap .close{position:absolute;top:15px;right:15px;font-size:25px}
+
+	</style>
+</head>
+<body>
+<h1>snackbar</h1>
+<div id="app">
+
+	<button v-for="item in btnItem" :key="item.type" v-on:click="modalOpen(item.type)" :class="item.class">
+		{{ item.title }}
+	</button>
+
+
+	<div class="snack-wrap" v-if="snackBar.visible" @click.self="snackBar.visible = false" :timeout="snackBar.timeout">
+	<div class="snack-box">
+			<span class="close" @click="snackBar.visible = false">&times;</span>
+
+			<h2>{{ snackBar.title }}</h2><br/><br/>
+			{{ snackBar.content }}
+
+		</div>
+	</div>
+</div>
+
+
+<script>
+	/**
+	 * 뷰 코드*/
+
+	new Vue({
+		el: '#app',
+		methods: {
+			/*
+			modalOpen: function (item) {
+				this.snackBar.title = item.title;
+				this.snackBar.content = item.content;
+				this.snackBar.visible = true;
+			}*/
+			modalOpen(type) {
+				//if (!item) return;
+				switch (type) {
+					case "basic":
+						this.snackBar = {
+							timeout: 3000,
+							title: "Basic",
+							content: "기본 스낵바",
+							visible: true
+						};
+						break;
+
+				}
+			}
+		},
+		data: {
+			btnItem: [
+				{
+					class: 'basic',
+					title: 'Basic',
+					content: '기본 스낵바',
+				},
+				{
+					class: 'left',
+					title: 'Left',
+				},
+				{
+					class: 'right',
+					title: 'Right',
+				}
+			],
+			snackBar: {
+				visible: false,
+				title: '',
+				content: '',
+				timeout: 2000,
+			},
+			timeout: 2000,
+		}
+	})
+</script>
+</body>
+</html>
