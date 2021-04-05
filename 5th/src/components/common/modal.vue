@@ -135,6 +135,7 @@
 			border:1px solid #222;
 			border-radius:100%;
 			font-size:0;
+			transition:.3s;
 			&:before, &:after{
 				content:'';
 				position:absolute;
@@ -143,12 +144,20 @@
 				width:16px;
 				height:1px;
 				background-color:#222;
+				transition:.3s;
 			}
 			&:before{
 				transform:translate(-50%, -50%) rotate(45deg);
 			}
 			&:after{
 				transform:translate(-50%, -50%) rotate(135deg);
+			}
+			&:hover{
+				background:#fff081;
+				border:1px solid #ff8f00;
+				&:before, &:after{
+					background-color:#ff8f00;
+				}
 			}
 		}
 	}
