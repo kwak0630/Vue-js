@@ -1,23 +1,21 @@
 <template>
 	<transition>
 		<div class="modal-wrap"
-			 v-if="visible"
-			 v-bind:item="boardListItem"
-			 v-bind:visible="visible">
+			 v-if="visible">
 			<!-- v-bind:list=:boardListItem"-->
 			<div class="modal-inner">
 				<div class="modal-content">
 					<button type="button" @click="close" class="close">닫기</button>
 					<div class="modal-header">
-						<h3 class="subject">제목{{ subject }}</h3>
+						<h3 class="subject">{{ modalData.subject }}</h3>
 						<div class="info">
-							<span>작성자{{ name }}</span>
-							<span>날짜{{ date }}</span>
+							<span>{{ modalData.name }}</span>
+							<span>{{ modalData.date }}</span>
 						</div>
 					</div>
 					<div class="modal-body">
-						<div class="thumb">이미지{{ imgsrc }}</div>
-						<p class="description">설명{{ description }}</p>
+						<div class="thumb"><img :src="modalData.imgsrc" alt="modalData.subject" @error="errorImg"/></div>
+						<p class="description">{{ modalData.description }}</p>
 					</div>
 				</div>
 			</div>
@@ -27,17 +25,22 @@
 
 
 <script>
+	import img from "@/assets/nodata.png"; //이미지 데이터 없을 경우
+
 	export default {
 		name: 'ModalView',
 		props: [
 			'visible',
-			'subject',
-			'name',
-			'date',
-			'imgsrc',
-			'description'
+			'modalData'
 		],
 		methods: {
+			errorImg(e){
+				/*
+				이미지 오류일 경우 @error=errorImg
+				이미지 imfort 해서 가져오
+				*/
+				e.target.src = img;
+			},
 			close: function () {
 				this.$emit('close');
 			},
@@ -56,14 +59,14 @@
 		.modal-inner{
 			position:fixed;top:50%;left:50%;
 			transform:translate(-50%, -50%);
-			width:500px;
+			width:800px;
 			background:#f7f7f7;
 			border-radius:15px;
 			padding:60px 30px 30px;
 		}
 		.modal-content{
 			overflow-y:scroll;
-			height:400px;
+			height:600px;
 			text-align:left;
 			&::-webkit-scrollbar{
 				display:none;
@@ -106,11 +109,22 @@
 					}
 				}
 			}
+			.modal-body{
+				padding:0 30px 30px;
+				//background:#ececec;
+			}
 			.thumb{
+				width:400px;
+				margin:0 auto;
+				text-align:center;
+				img{
+					width:100%;
+				}
 			}
 			.description{
-				margin-top:20px;
-				line-height:21px;
+				margin-top:30px;
+				line-height:23px;
+				font-size:17px;
 			}
 		}
 		.close{
