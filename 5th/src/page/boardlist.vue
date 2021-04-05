@@ -11,6 +11,13 @@
 			</p>
 			<div class="board-wrap">
 				<div class="board-top">
+					<!-- 리스트 타입 -->
+					<div class="list-type">
+						<a v-on:click="type='list'" :class="[ type === 'list' ? 'active' : '' ]">리스트</a>
+						<a v-on:click="type='gallery'" :class="[ type === 'gallery' ? 'active' : '' ]">갤러리</a>
+						<a v-on:click="type='webzine'" :class="[ type === 'webzine' ? 'active' : '' ]">웹진</a>
+					</div>
+					<!-- 검색 -->
 					<div class="sch-wrap">
 						<input-field
 								v-model="inputSch"
@@ -19,12 +26,6 @@
 								placeholder="검색어를 입력하세요."
 						/>
 						<button class="btn">검색</button>
-					</div>
-
-					<div class="list-type">
-						<a v-on:click="type='list'" :class="[ type === 'list' ? 'active' : '' ]">리스트</a>
-						<a v-on:click="type='gallery'" :class="[ type === 'gallery' ? 'active' : '' ]">갤러리</a>
-						<a v-on:click="type='webzine'" :class="[ type === 'webzine' ? 'active' : '' ]">웹진</a>
 					</div>
 				</div>
 
@@ -60,7 +61,8 @@
 								</tr>
 								</tbody>
 							</table>
-							<pagination :total="5" :total-pages="5" :current-page="currentPage" @pagechanged="onPageChange"></pagination>
+							
+							<pagination :total="5" :current-page="currentPage" @pagechanged="onPageChange"></pagination>
 						</div>
 					</div>
 					<div v-if="type ==='gallery'" class="tab-content">
@@ -75,6 +77,8 @@
 								</li>
 							</ul>
 						</div>
+
+						<pagination :total="5" :current-page="currentPage" @pagechanged="onPageChange"></pagination>
 					</div>
 					<div v-if="type ==='webzine'" class="tab-content">
 						<div class="gallery-list v2">
@@ -96,6 +100,8 @@
 								</li>
 							</ul>
 						</div>
+
+						<pagination :total="5" :current-page="currentPage" @pagechanged="onPageChange"></pagination>
 					</div>
 
 					<Modal-View
@@ -131,7 +137,6 @@
 			return {
 				inputSch: '',
 				type: 'list',
-				listItem: {},
 				visible: false,
 				currentPage: 1,
 				boardListItem: [
@@ -161,7 +166,6 @@
 						imgsrc: '@/assets/logo.png',
 					}
 				],
-				isModalVisible: false,
 			}
 		},
 		methods: {
