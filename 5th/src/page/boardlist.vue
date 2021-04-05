@@ -105,6 +105,7 @@
 					</div>
 
 					<Modal-View
+							v-bind:modalData="modalData"
 							v-bind:visible="visible"
 							v-on:close="modalClose"
 					/>
@@ -160,7 +161,7 @@
 					},
 					{
 						num: '3',
-						subject: '제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 제목 ',
+						subject: '제목 제목 제목 제목 제목 제목 제목 제목 제목',
 						description: '내용 내용 내용 내용 내용 내용',
 						name: 'sally',
 						date: '2021-04-01',
@@ -183,12 +184,7 @@
 			},
 
 			modalOpen: function(item) {
-				//this.boardListItem = item;
-				this.subject = item.subject;
-				this.name = item.name;
-				this.date = item.date;
-				this.description = item.description;
-				this.imgsrc = item.imgsrc;
+				this.modalData = item;
 				this.visible = true;
 			},
 
