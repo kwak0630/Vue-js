@@ -25,10 +25,6 @@
 				required: false,
 				default: 5
 			},
-			totalPages: {
-				type: Number,
-				required: true
-			},
 			total: {
 				type: Number,
 				required: true
@@ -46,7 +42,7 @@
 				return 1
 			},
 			endPage: function () {
-				return Math.min(this.startPage + this.maxVisibleButtons - 1, this.totalPages)
+				return Math.min(this.startPage + this.maxVisibleButtons - 1, this.total)
 			},
 			pages: function () {
 				const range = []
@@ -67,7 +63,7 @@
 				this.$emit('pagechanged', page)
 			},
 			onClickLastPage: function () {
-				this.$emit('pagechanged', this.totalPages)
+				this.$emit('pagechanged', this.total)
 			},
 			isPageActive: function (page) {
 				return this.currentPage === page;
