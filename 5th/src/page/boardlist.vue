@@ -61,7 +61,7 @@
 								</tr>
 								</tbody>
 							</table>
-							
+
 							<pagination :total="5" :current-page="currentPage" @pagechanged="onPageChange"></pagination>
 						</div>
 					</div>
@@ -108,6 +108,7 @@
 							v-bind:visible="visible"
 							v-on:close="modalClose"
 					/>
+					<!-- v-bind:list=:boardListItem"-->
 				</div>
 			</div>
 		</div>
@@ -182,6 +183,7 @@
 			},
 
 			modalOpen: function(item) {
+				//this.boardListItem = item;
 				this.subject = item.subject;
 				this.name = item.name;
 				this.date = item.date;
