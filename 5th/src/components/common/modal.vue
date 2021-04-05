@@ -1,5 +1,5 @@
 <template>
-	<transition>
+	<transition name="modal">
 		<div class="modal-wrap"
 			 v-if="visible">
 			<!-- v-bind:list=:boardListItem"-->
@@ -153,7 +153,7 @@
 		}
 	}
 	.modal-enter-active, .modal-leave-active {
-		transition:.5s;
+		transition:.3s;
 	}
 	.modal-leave-active {
 		position:absolute;
