@@ -19,15 +19,13 @@
 			</div>
 		</div>
 		<div class="board-content">
-			<transition name="board">
-				<!-- 게시판 리스트 -->
-				<component
-						v-bind:is="type"
-						v-bind:boardItem="boardItem"
-						v-on:modalOpen="modalOpen"/>
+			<!-- 게시판 리스트 -->
+			<component
+					v-bind:is="type"
+					v-bind:boardItem="boardItem"
+					v-on:modalOpen="modalOpen"/>
 
-				<pagination :total="5" :current-page="currentPage" @pagechanged="onPageChange"></pagination>
-			</transition>
+			<pagination :total="5" :current-page="currentPage" @pagechanged="onPageChange"></pagination>
 		</div>
 		<!-- 모달 팝업 -->
 		<Modal-View
