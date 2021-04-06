@@ -55,21 +55,21 @@
 					{
 						id:'5',
 						title: '게시판',
-						href: '/boardlist'
-					},
-					{
-						id:'97',
-						title: '게시판(Components)',
 						href: '/board'
 					},
 					{
+						id:'97',
+						title: '게시판',
+						href: '/boardlist'
+					},
+					{
 						id:'98',
-						title: 'Form(Components)',
+						title: 'Form(연습2)',
 						href: '/form2'
 					},
 					{
 						id:'99',
-						title: 'Form(연습)',
+						title: 'Form(연습1)',
 						href: '/form'
 					},
 				],
@@ -156,7 +156,20 @@
 					width: 100%;
 				}
 			}
-			&:last-child{
+			&:nth-child(5){
+				margin-top:90px;
+				&:before{
+					display:block;
+					content:'연습';
+					font-size:12px;
+					color:rgba(0,0,0,0.4);
+				}
+			}
+			&:nth-child(n+5){
+				a{
+					color:rgba(0,0,0,0.4);
+					font-size:13px;
+				}
 			}
 		}
 	}
