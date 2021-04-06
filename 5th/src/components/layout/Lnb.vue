@@ -169,6 +169,9 @@
 				a{
 					color:rgba(0,0,0,0.4);
 					font-size:13px;
+					&:before{
+						background:rgba(0,0,0,0.4);
+					}
 				}
 			}
 		}
