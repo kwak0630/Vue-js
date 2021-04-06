@@ -27,6 +27,7 @@
 
 			<pagination :total="5" :current-page="currentPage" @pagechanged="onPageChange"></pagination>
 		</div>
+
 		<!-- 모달 팝업 -->
 		<Modal-View
 				v-bind:modalData="modalData"
