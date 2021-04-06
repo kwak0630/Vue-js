@@ -59,12 +59,12 @@
 					},
 					{
 						id:'97',
-						title: '게시판(Componenets)',
+						title: '게시판(Components)',
 						href: '/board'
 					},
 					{
 						id:'98',
-						title: 'Form(Componenets)',
+						title: 'Form(Components)',
 						href: '/form2'
 					},
 					{
