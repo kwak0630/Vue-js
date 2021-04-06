@@ -58,8 +58,13 @@
 						href: '/boardlist'
 					},
 					{
+						id:'97',
+						title: '게시판(Componenets)',
+						href: '/board'
+					},
+					{
 						id:'98',
-						title: 'Form(연습2)',
+						title: 'Form(Componenets)',
 						href: '/form2'
 					},
 					{
