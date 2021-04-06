@@ -49,7 +49,6 @@
 	import Pagination from "@/components/board/pagination";
 	import ModalView from "@/components/common/modal";
 
-
 	export default {
 		name: 'boardType',
 		components: {

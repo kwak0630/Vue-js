@@ -14,6 +14,7 @@
 
 <script>
 	import img from "@/assets/nodata.png"; //이미지 데이터 없을 경우
+
 	export default {
 		name: 'boardGallery',
 		props: [
