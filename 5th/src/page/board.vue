@@ -32,7 +32,7 @@
 				boardListItem: [
 					{
 						num: '1',
-						subject: '공지입니다.',
+						subject: '공지입니다!!! 확인 부탁~~!!!',
 						description: '공지사항입니다. 공지사항입니다. 공지사항입니다. 공지사항입니다. 공지사항입니다.',
 						name: 'sally',
 						date : '2021-04-02',
@@ -42,7 +42,7 @@
 					{
 						num: '2',
 						subject: '4/3(토) 2021 프로야구 개막',
-						description: '드디어 야구 시즌 시작!',
+						description: '드디어 야구 시즌 시작! 두산 이겨라 ~ 두산 이겨라~',
 						name: 'sally',
 						date : '2021-04-02',
 						imgsrc: require('@/assets/img01.jpg'),
