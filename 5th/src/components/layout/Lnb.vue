@@ -59,17 +59,17 @@
 					},
 					{
 						id:'97',
-						title: '게시판',
+						title: '게시판_test',
 						href: '/boardlist'
 					},
 					{
 						id:'98',
-						title: 'Form(연습2)',
+						title: 'Form_test2',
 						href: '/form2'
 					},
 					{
 						id:'99',
-						title: 'Form(연습1)',
+						title: 'Form_test1',
 						href: '/form'
 					},
 				],
