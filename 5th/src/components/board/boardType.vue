@@ -19,14 +19,15 @@
 			</div>
 		</div>
 		<div class="board-content">
-			<!-- 게시판 리스트 -->
-			<component
-					v-bind:is="type"
-					v-bind:boardItem="boardItem"
-					v-on:modalOpen="modalOpen"/>
+			<transition name="board">
+				<!-- 게시판 리스트 -->
+				<component
+						v-bind:is="type"
+						v-bind:boardItem="boardItem"
+						v-on:modalOpen="modalOpen"/>
 
-			<pagination :total="5" :current-page="currentPage" @pagechanged="onPageChange"></pagination>
-
+				<pagination :total="5" :current-page="currentPage" @pagechanged="onPageChange"></pagination>
+			</transition>
 		</div>
 		<!-- 모달 팝업 -->
 		<Modal-View
@@ -162,14 +163,7 @@
 						height:100%
 					}
 					.cont{
-						//opacity:0;
-						position:absolute;
-						top:20px;
-						left:20px;
-						right:20px;
-						transition:all 0.3s ease-in;
 						p{
-							//color:#fff;
 							font-size:22px;
 						}
 					}
@@ -178,20 +172,6 @@
 					}
 					&:hover{
 						border:1px solid #FF8F00;
-						.cont{
-							//opacity: 1;
-						}
-						&:before{
-							transition:all 0.3s ease-in;
-							display:none;
-							content:'';
-							position:absolute;
-							top:0;
-							left:0;
-							width:100%;
-							height:100%;
-							background:rgba(0,0,0,0.4);
-						}
 					}
 				}
 				&.v2{
@@ -199,12 +179,7 @@
 						width:calc(25% - 15px);
 						min-height:480px;
 						.cont{
-							opacity: 1;
 							border-top:1px solid #ddd;
-							position:relative;
-							top:inherit;
-							left:inherit;
-							right:inherit;
 							padding:15px;
 							p{
 								font-size:16px;
@@ -243,9 +218,6 @@
 									}
 								}
 							}
-						}
-						&:before{
-							display:none;
 						}
 					}
 				}
