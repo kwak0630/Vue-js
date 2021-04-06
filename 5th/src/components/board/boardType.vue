@@ -2,11 +2,10 @@
 	<div class="board-wrap">
 		<div class="board-top">
 			<!-- 리스트 타입 -->
-			<list-type></list-type>
 			<div class="list-type">
-				<a v-on:click="type='list'" :class="[ type === 'list' ? 'active' : '' ]">리스트</a>
-				<a v-on:click="type='gallery'" :class="[ type === 'gallery' ? 'active' : '' ]">갤러리</a>
-				<a v-on:click="type='webzine'" :class="[ type === 'webzine' ? 'active' : '' ]">웹진</a>
+				<a v-on:click="type='BoardTable'" :class="[ type === 'BoardTable' ? 'active' : '' ]">리스트</a>
+				<a v-on:click="type='BoardGallery'" :class="[ type === 'BoardGallery' ? 'active' : '' ]">갤러리</a>
+				<a v-on:click="type='BoardWebzine'" :class="[ type === 'BoardWebzine' ? 'active' : '' ]">웹진</a>
 			</div>
 			<!-- 검색 -->
 			<div class="sch-wrap">
@@ -20,97 +19,45 @@
 			</div>
 		</div>
 		<div class="board-content">
-			<div v-if="type === 'list'" class="tab-content">
-				<div class="table-wrap">
-					<table>
-						<colgroup>
-							<col width="10%"/>
-							<col />
-							<col width="10%"/>
-							<col width="20%"/>
-						</colgroup>
-						<thead>
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>날짜</th>
-						</tr>
-						</thead>
-						<tbody>
-						<tr v-for="(item, key) in boardItem" v-bind:key="key">
-							<td>{{item.num}}</td>
-							<td class="subject"><a href="#" v-on:click.prevent="modalOpen(item)">{{item.subject}}</a></td>
-							<td>{{item.name}}</td>
-							<td>{{item.date}}</td>
-						</tr>
-						</tbody>
-					</table>
-				</div>
+			<!-- 게시판 리스트 -->
+			<component
+					v-bind:is="type"
+					v-bind:boardItem="boardItem"
+					v-on:modalOpen="modalOpen"/>
 
-				<pagination :total="5" :current-page="currentPage" @pagechanged="onPageChange"></pagination>
-			</div>
-			<div v-else-if="type === 'gallery'" class="tab-content">
-				<div class="gallery-list">
-					<ul>
-						<li v-for="(item, key) in boardItem" :key="key">
-							<a href="#" @click="modalOpen(item)">
-								<div class="thumb">
-									<img :src="item.imgsrc" :alt="item.subject" @error="errorImg" />
-								</div>
-							</a>
-						</li>
-					</ul>
-				</div>
+			<pagination :total="5" :current-page="currentPage" @pagechanged="onPageChange"></pagination>
 
-				<pagination :total="5" :current-page="currentPage" @pagechanged="onPageChange"></pagination>
-			</div>
-			<div v-else="type === 'webzine'" class="tab-content">
-				<div class="gallery-list v2">
-					<ul>
-						<li v-for="(item, key) in boardItem" :key="key">
-							<a href="#" @click="modalOpen(item)">
-								<div class="thumb">
-									<img :src="item.imgsrc" @error="errorImg" />
-								</div>
-								<div class="cont">
-									<p class="subject">{{item.subject}}</p>
-									<p class="description">{{item.description}}</p>
-									<p class="info">
-										<span>{{item.name}}</span>
-										<span>{{item.date}}</span>
-									</p>
-								</div>
-							</a>
-						</li>
-					</ul>
-				</div>
-
-				<pagination :total="5" :current-page="currentPage" @pagechanged="onPageChange"></pagination>
-			</div>
-
-			<Modal-View
-					v-bind:modalData="modalData"
-					v-bind:visible="visible"
-					v-on:close="modalClose"
-			/>
 		</div>
+		<!-- 모달 팝업 -->
+		<Modal-View
+				v-bind:modalData="modalData"
+				v-bind:visible="visible"
+				v-on:close="modalClose"
+		/>
 	</div>
 
 </template>
 
 <script>
 	import InputField from "@/components/form/inputField";
-	import ModalView from "@/components/common/modal";
+
+	import BoardTable from "@/components/board/boardTable";
+	import BoardGallery from "@/components/board/boardGallery";
+	import BoardWebzine from "@/components/board/boardWebzine";
+
 	import Pagination from "@/components/board/pagination";
-	import img from "@/assets/nodata.png"; //이미지 데이터 없을 경우
+	import ModalView from "@/components/common/modal";
+
 
 	export default {
 		name: 'boardType',
 		components: {
 			InputField,
+			BoardTable,
+			BoardGallery,
+			BoardWebzine,
+			Pagination,
 			ModalView,
-			Pagination
 		},
 		props: [
 			'boardItem'
@@ -119,7 +66,7 @@
 			return {
 				inputSch: '',
 				visible: false,
-				type: 'list',
+				type: 'BoardTable',
 				currentPage: 1,
 			};
 		},
@@ -127,13 +74,6 @@
 			onPageChange: function (page) {
 				//console.log(page)
 				this.currentPage = page;
-			},
-			errorImg(e){
-				/*
-				이미지 오류일 경우 @error=errorImg
-				이미지 imfort 해서 가져오
-				*/
-				e.target.src = img;
 			},
 			modalOpen: function(item) {
 				this.modalData = item;
