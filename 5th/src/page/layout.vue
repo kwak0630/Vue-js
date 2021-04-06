@@ -97,18 +97,18 @@
 		display: block;
 		margin-left: 250px;
 		padding: 50px;
-		height: calc(100vh - 100px);
+		height: calc(100vh - 80px);
 		overflow-y:scroll;
 
 		h2 {
-			margin-bottom: 30px;
+			margin-bottom: 20px;
 			padding-bottom: 10px;
 			border-bottom: 1px solid #949494;
 			font-size: 40px;
 			font-weight:800;
 		}
 		.sub-tit{
-			margin-bottom:30px;
+			margin-bottom:20px;
 			font-size:13px;
 			line-height:17px;
 			color:#333;
