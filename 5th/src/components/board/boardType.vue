@@ -184,12 +184,13 @@
 								color:#333;
 							}
 							.subject{
-								margin-bottom:10px;
+								margin-bottom:15px;
 								font-weight:700;
 							}
 							.description{
-								margin-bottom:10px;
-								line-height:18px;
+								margin-bottom:15px;
+								font-size:15px;
+								line-height:21px;
 							}
 							.info{
 								font-size:0;
