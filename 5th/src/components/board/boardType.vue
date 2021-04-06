@@ -47,6 +47,8 @@
 						</tbody>
 					</table>
 				</div>
+
+				<pagination :total="5" :current-page="currentPage" @pagechanged="onPageChange"></pagination>
 			</div>
 			<div v-else-if="type === 'gallery'" class="tab-content">
 				<div class="gallery-list">
@@ -60,6 +62,8 @@
 						</li>
 					</ul>
 				</div>
+
+				<pagination :total="5" :current-page="currentPage" @pagechanged="onPageChange"></pagination>
 			</div>
 			<div v-else="type === 'webzine'" class="tab-content">
 				<div class="gallery-list v2">
@@ -81,6 +85,8 @@
 						</li>
 					</ul>
 				</div>
+
+				<pagination :total="5" :current-page="currentPage" @pagechanged="onPageChange"></pagination>
 			</div>
 
 			<Modal-View
@@ -96,13 +102,15 @@
 <script>
 	import InputField from "@/components/form/inputField";
 	import ModalView from "@/components/common/modal";
+	import Pagination from "@/components/board/pagination";
 	import img from "@/assets/nodata.png"; //이미지 데이터 없을 경우
 
 	export default {
 		name: 'boardType',
 		components: {
 			InputField,
-			ModalView
+			ModalView,
+			Pagination
 		},
 		props: [
 			'boardItem'
@@ -112,9 +120,14 @@
 				inputSch: '',
 				visible: false,
 				type: 'list',
+				currentPage: 1,
 			};
 		},
 		methods: {
+			onPageChange: function (page) {
+				//console.log(page)
+				this.currentPage = page;
+			},
 			errorImg(e){
 				/*
 				이미지 오류일 경우 @error=errorImg
