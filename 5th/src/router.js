@@ -4,6 +4,8 @@ import remotework from "@/page/remotework.vue";
 import mypage from "@/page/mypage.vue";
 import boardlist from "@/page/boardlist.vue";
 
+import board from "@/page/board.vue";
+
 import form from "@/page/form.vue";
 import form2 from "@/page/form2.vue";
 
@@ -17,6 +19,7 @@ const router = {
 	'/remotework': remotework,
 	'/mypage': mypage,
 	'/boardlist': boardlist,
+	'/board': board,
 	'/form': form,
 	'/form2': form2,
 	//'/': Welcome,
