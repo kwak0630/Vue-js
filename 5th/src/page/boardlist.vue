@@ -121,7 +121,6 @@
 	import Lnb from "@/components/layout/Lnb";
 	import Footer from "@/components/layout/Footer";
 	import InputField from "@/components/form/inputField";
-	import Tabs from "@/components/common/tab";
 	import Pagination from "@/components/board/pagination";
 	import ModalView from "@/components/common/modal";
 	import img from "@/assets/nodata.png"; //이미지 데이터 없을 경우
