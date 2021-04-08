@@ -12,6 +12,7 @@
 						<p class="info">
 							<span>{{item.name}}</span>
 							<span>{{item.date}}</span>
+							<span>{{item.hit}}</span>
 						</p>
 					</div>
 				</a>
