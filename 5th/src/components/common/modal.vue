@@ -2,10 +2,21 @@
 	<transition name="modal">
 		<div class="modal-wrap"
 			 v-if="visible">
-			<!-- v-bind:list=:boardListItem"-->
 			<div class="modal-inner">
 				<div class="modal-content">
 					<button type="button" @click="close" class="close">닫기</button>
+					<div class="modal-header">
+						<slot name="md-header"></slot>
+					</div>
+					<div class="modal-body">
+						<slot name="md-body"></slot>
+					</div>
+					<div class="modal-footer">
+						<slot name="md-footer"></slot>
+					</div>
+					<slot name="modal-body"></slot>
+					<slot name="modal-footer"></slot>
+					<!--
 					<div class="modal-header">
 						<h3 class="subject">{{ modalData.subject }}</h3>
 						<div class="info">
@@ -17,6 +28,7 @@
 						<div class="thumb"><img :src="modalData.imgsrc" alt="modalData.subject" @error="errorImg"/></div>
 						<p class="description">{{ modalData.description }}</p>
 					</div>
+					-->
 				</div>
 			</div>
 		</div>
@@ -25,7 +37,6 @@
 
 
 <script>
-	import img from "@/assets/nodata.png"; //이미지 데이터 없을 경우
 
 	export default {
 		name: 'ModalView',
@@ -34,13 +45,6 @@
 			'modalData'
 		],
 		methods: {
-			errorImg(e){
-				/*
-				이미지 오류일 경우 @error=errorImg
-				이미지 imfort 해서 가져오
-				*/
-				e.target.src = img;
-			},
 			close: function () {
 				this.$emit('close');
 			},
@@ -62,7 +66,7 @@
 			width:800px;
 			background:#f7f7f7;
 			border-radius:15px;
-			padding:60px 30px 30px;
+			padding:40px 30px 30px;
 		}
 		.modal-content{
 			overflow-y:scroll;
@@ -71,20 +75,20 @@
 			&::-webkit-scrollbar{
 				display:none;
 			}
+
 			.modal-header{
 				position:relative;
 				margin-bottom:35px;
-			}
-			.subject{
-				padding:10px 0 15px;
-				font-size:30px;
-				font-weight:700;
 				border-bottom:1px solid #ddd;
 			}
+			.subject{
+				padding:10px 0 20px;
+				font-size:30px;
+				font-weight:700;
+			}
 			.info{
-				position:absolute;
-				bottom:25px;
-				right:5px;
+				margin-bottom:20px;
+				padding-left:5px;
 				font-size:0;
 				span{
 					position:relative;
@@ -92,6 +96,7 @@
 					font-size:13px;
 					padding-right:10px;
 					color:#999999;
+					vertical-align:middle;
 					&:after{
 						display:inline-block;
 						content:'';
@@ -111,7 +116,6 @@
 			}
 			.modal-body{
 				padding:0 30px 30px;
-				//background:#ececec;
 			}
 			.thumb{
 				width:400px;
