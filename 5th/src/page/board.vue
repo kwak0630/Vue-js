@@ -31,29 +31,32 @@
 			return {
 				boardListItem: [
 					{
-						num: '1',
+						num: 1,
 						subject: '공지입니다!!! 확인 부탁~~!!!',
 						description: '공지사항입니다. 공지사항입니다. 공지사항입니다. 공지사항입니다. 공지사항입니다.',
 						name: 'sally',
 						date : '2021-04-02',
 						class: 'notice',
 						imgsrc: require('@/assets/img02.png'),
+						hit: 0,
 					},
 					{
-						num: '2',
+						num: 2,
 						subject: '4/3(토) 2021 프로야구 개막',
 						description: '드디어 야구 시즌 시작! 두산 이겨라 ~ 두산 이겨라~',
 						name: 'sally',
 						date : '2021-04-02',
 						imgsrc: require('@/assets/img01.jpg'),
+						hit: 0,
 					},
 					{
-						num: '3',
+						num: 3,
 						subject: '제목 제목 제목 제목 제목 제목 제목 제목 제목',
 						description: '내용 내용 내용 내용 내용 내용',
 						name: 'sally',
 						date: '2021-04-01',
 						imgsrc: '@/assets/logo.png',
+						hit: 0,
 					}
 				]
 			}

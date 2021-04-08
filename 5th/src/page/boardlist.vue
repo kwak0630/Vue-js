@@ -9,7 +9,7 @@
 				2. Model 은 갤러리형, 리스트형, 웹진형에 모두 대응할 수 있어야 합니다.<br/>
 				3. 갤러리형, 리스트형, 웹진형의 전환 버튼을 구현하여 실시간으로 변경될 수 있어야 합니다.
 			</p>
-			<div class="board-wrap">
+			<div class="board-wrap2">
 				<div class="board-top">
 					<!-- 리스트 타입 -->
 					<div class="list-type">
@@ -196,7 +196,7 @@
 </script>
 
 <style lang="scss">
-	.board-wrap{
+	.board-wrap2{
 		margin-top:50px;
 		.board-top{
 			position:relative;
