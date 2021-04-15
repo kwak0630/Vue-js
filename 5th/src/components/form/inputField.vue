@@ -12,7 +12,8 @@
 				:placeholder="placeholder"
 				:maxlength="maxlength"
 				:class="[(isErr === true) ? 'box-error' : '']"
-				@input="change">
+				@input="change"
+				@keyup.enter="enterSubmit">
 		<div v-if="isMessage"
 			 class="error-text"
 			 :class="[(isErr === true) ? 'text-error' : '']">
@@ -78,6 +79,13 @@
 					this.isErr = isMsg;
 					this.message = msg[0];
 				}
+			},
+			enterSubmit:function($event) {
+				if ( $event.target.value == '')
+					return;
+				console.log("submit 완료!" + this.value);
+				document.querySelector("#enterResult").innerHTML += this.value + '<br>';
+				this.value = '';
 			}
 		}
 	}
