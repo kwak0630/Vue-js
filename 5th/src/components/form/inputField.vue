@@ -81,9 +81,9 @@
 				}
 			},
 			enterSubmit:function($event) {
-				if ( $event.target.value == '')
+				//인풋에서 엔터 쳤을 경우 값이 enterResult 안으로 들어가게 함
+				if ($event.target.value == '')
 					return;
-				console.log("submit 완료!" + this.value);
 				document.querySelector("#enterResult").innerHTML += this.value + '<br>';
 				this.value = '';
 			}
